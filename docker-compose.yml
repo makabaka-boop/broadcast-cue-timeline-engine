@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    image: cue-control:latest
+    container_name: cue-control-api
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - cue-data:/data
+    environment:
+      CUE_DB_PATH: /data/cue_control.db
+    restart: unless-stopped
+
+volumes:
+  cue-data:
